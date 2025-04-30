@@ -1,9 +1,11 @@
 import folium
 import requests 
-import polyline
 from dotenv import load_dotenv
+from app import create_app
 
 load_dotenv()
+
+app = create_app()
 
 def create_map(locations):
     """Create a base map, then expand by adding the route between each pair of locations"""
@@ -47,4 +49,4 @@ def main():
     new_map.save('travel_map.html')
 
 if __name__ == "__main__":
-    main()
+    app.run(debug=True)
